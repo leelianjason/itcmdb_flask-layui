@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加角色</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css"/>
+</head>
+<body>
+<div class="x-body">
+    <div id="addlistform" style="width: 600px;margin: 0 auto;">
+        <form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">编号</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" id="num" name="num" required lay-verify="required"
+                           placeholder="输入机器编号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">项目组</label>
+                <div class="layui-input-block" style="width: 300px">
+                    <select id="project" name="project">
+                        <option value="">选择项目</option>
+                        {% for project in project_list %}
+                            <option value="{{ project }}">{{ project }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">使用人</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" id="user" name="user" placeholder="输入使用人"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">机器状态</label>
+                <div class="layui-input-block" style="width: 300px">
+                    <select id="status" name="status">
+                        <option value="">选择状态</option>
+                        {% for status in status_list %}
+                            <option value="{{ status }}">{{ status }}</option>
+                        {% endfor %}>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">机器类型</label>
+                <div class="layui-input-block" style="width: 300px">
+                    <select id="type" name="type">
+                        <option value="">选择类型</option>
+                        {% for type in type_list %}
+                            <option value="{{ type }}">{{ type }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">购买日期</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" class="layui-input" name="buytime" id="buytime"
+                           placeholder="yyyy年MM月dd日">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">CPU型号</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" id="cpu" name="cpu" placeholder="cpu型号" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">主板型号</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" id="mb" name="mb" placeholder="主板型号" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">显卡型号</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" id="gpu" name="gpu" placeholder="显卡型号" autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">内存容量</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" id="mem" name="mem" placeholder="8GB/16GB"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">主硬盘容量</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" id="maindisk" name="maindisk" placeholder="500GB"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">副硬盘容量</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" id="slavedisk" name="slavedisk" placeholder="500GB"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width: auto">主显示器编号</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" id="maindisplay" name="maindisplay" placeholder="显示器编号"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width: auto">副显示器编号</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" id="slavedisplay" name="slavedisplay" placeholder="副显示器编号"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width: 116px">备注</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="text" id="comments" name="comments" placeholder="备注"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block" style="width: 300px">
+                    <button class="layui-btn" lay-submit="" lay-filter="subAddListBtn">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="/static/layui/layui.js"></script>
+<script src="/static/js/it/ITDataAdd.js"></script>
+</body>
+</html>

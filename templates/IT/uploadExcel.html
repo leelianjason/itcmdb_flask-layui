@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Excel导入</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css"/>
+</head>
+<body>
+
+
+<div class="x-body">
+    <div class="layui-form"
+         style="border: 0 solid ;text-align: center; width: 500px; height: 100px; margin: auto;position: absolute;top: 0;left: 0;right: 0;bottom: 20%;">
+        <div class="layui-form-item" style="margin: 10px; ">
+            <label class="layui-form-label">模板下载：</label>
+            <div class="layui-input-block" style="text-align: left;width: 260px">
+                <a style="color: #1E9FFF" href="/servers/get_excel">点击下载Excel模板</a> <br>
+                <span style="color: #5a6268">请下载模板后填充数据导入</span>
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin: 10px">
+            <label class="layui-form-label">导入数据：</label>
+            <div class="layui-input-block" style="text-align: left;">
+                <div class="layui-upload">
+                    <button type="button" class="layui-btn layui-btn-primary" id="changeFileBtn"
+                            style="margin: 0 10px 0 0">
+                        选择文件
+                    </button>
+                    <button type="button" class="layui-btn" id="uploadFileBtn">开始上传</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/static/layui/layui.js"></script>
+<script src="/static/js/it/ExcelUpload.js"></script>
+</body>
+</html>

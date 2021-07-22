@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资产管理</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css"/>
+</head>
+
+<body>
+<div class="x-body">
+    <div class="layui-form">
+        {# 搜索框#}
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: auto">搜索</label>
+            <div class="layui-input-inline">
+                <input type="text" name="keyWords" id="keyWords" placeholder="搜索用户"
+                       autocomplete="off" class="layui-input" style="width: 200px"/>
+            </div>
+            <label class="layui-form-label" style="width: auto">状态</label>
+            <div class="layui-input-inline" style="width: 100px">
+                <select id="status" lay-verify="">
+                    <option value="">选择状态</option>
+                    {% for status in status_list %}
+                        <option value="{{ status }}">{{ status }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <label class="layui-form-label" style="width: auto">项目</label>
+            <div class="layui-input-inline" style="width: 100px">
+                <select id="project" lay-verify="">
+                    <option value="">选择项目</option>
+                    {% for project in project_list %}
+                        <option value="{{ project }}">{{ project }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <label class="layui-form-label" style="width: auto">类型</label>
+            <div class="layui-input-inline" style="width: 100px">
+                <select id="type" lay-verify="">
+                    <option value="">选择类型</option>
+                    {% for type in type_list %}
+                        <option value="{{ type }}">{{ type }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="site-demo-button">
+                <button type="button" class="layui-btn-normal layui-btn" id="SearchBtn">搜索</button>
+            </div>
+        </div>
+    </div>
+    {#数据表格主体#}
+    <div>
+        <table class="layui-hide" id="itDataTable" lay-filter="itDataTable"></table>
+    </div>
+</div>
+</body>
+<script src="/static/layui/layui.js"></script>
+<script src="/static/js/it/ITManage.js"></script>
+
+{# 表头工具#}
+<script type="text/html" id="itDatatoolbar">
+    {#    <button class="layui-btn layui-btn-sm" data-type="getCheckData" lay-filter="batchDel">获取选中行数据</button>#}
+</script>
+<script type="text/html" id="itDatabar">
+    <a class="layui-btn layui-btn-sm" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
+</script>
+</html>

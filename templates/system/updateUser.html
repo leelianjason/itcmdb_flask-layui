@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑用户</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css"/>
+</head>
+<body>
+
+
+<div class="x-body">
+    <div class="layui-form layui-form-pane" style="padding: 20px 40px;">
+        <input type="hidden" name="userId" value="{{ content.user.pk_id }}"/>
+
+        <div class="layui-form-item">
+            <label for="loginName" class="layui-form-label">
+                <span class="x-red">*</span>账号
+            </label>
+            <div class="layui-input-block">
+                <input value="{{ content.user.login_name }}" type="text" name="loginName" id="loginName" required=""
+                       lay-verify="required" autocomplete="off" class="layui-input"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="nickName" class="layui-form-label">
+                <span class="x-red">*</span>昵称
+            </label>
+            <div class="layui-input-block">
+                <input value="{{ content.user.nick_name }}" type="text" name="nickName" id="nickName" required=""
+                       lay-verify="required" autocomplete="off" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-block">
+                <input type="password" name="passWord" id="passWord" autocomplete="off" class="layui-input"/>
+            </div>
+            <div class="layui-form-mid layui-word-aux">不修改则留空</div>
+
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">*角色</label>
+            <div class="layui-input-block">
+                <select name="role" lay-filter="role" id="role">
+                    {% for role in content.roleList %}
+                        {% if role.pk_id == content.user.role_id %}
+                            <option value="{{ role.pk_id }}" selected="">{{ role.role_name }}</option>
+                        {% else %}
+                            <option value="{{ role.pk_id }}">{{ role.role_name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item" style="width: 80% ;margin: 0 auto">
+            <button class="layui-btn" lay-submit="" lay-filter="save">保存</button>
+        </div>
+
+
+    </div>
+</div>
+
+
+<script src="/static/layui/layui.js"></script>
+<script src="/static/js/system/updateUser.js"></script>
+</body>
+</html>
