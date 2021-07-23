@@ -1,16 +1,9 @@
 from servers.tools import models
 from flask_sqlalchemy import SQLAlchemy
 import time, hashlib
-from ..system.utils import Response
+from ..system.utils import APIResponse
 
 db = SQLAlchemy()
-
-
-class APIResponse(Response):
-    def __init__(self):
-        self.code = 0  # 0为正常，1为执行错误
-        self.msg = ''
-        self.data = dict()
 
 
 def getUserNum(params):
@@ -134,7 +127,7 @@ def updateUser(params):
             if passwordtmp:
                 password = hashlib.md5(passwordtmp.encode("utf-8")).hexdigest()
                 response.password = password
-            response.login_name = login_name
+                response.login_name = login_name
             response.nick_name = nick_name
             response.role_id = role_id
             response.update_time = nowtime

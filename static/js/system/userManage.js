@@ -31,7 +31,7 @@ layui.use(["table", "jquery", "layer"], function () {
             type: 2,
             title: "添加用户",
             shade: false,
-            area: ["700px", "400px"],
+            area: ["600px", "400px"],
             content: "/system/addUser",
             end: function () {
                 reload();
@@ -49,32 +49,42 @@ layui.use(["table", "jquery", "layer"], function () {
                 type: 2,
                 title: "编辑",
                 shade: false,
-                area: ["450px", "650px"],
+                area: ["600px", "400px"],
                 content: "/system/updateUser?userId=" + userId,
                 end: function () {
                     reload();
                 }
             })
         } else if (layEvent === 'del') {
-            $.ajax({
-                type: "POST",
-                url: "/system/deleteUser",
-                data: {"userId": userId},
-                success: function (res) {
-                    if (res.code === 0) {
-                        layer.alert(res.msg, {icon: 6}, function () {
-                            let index = layer.open(); //获取窗口索引
-                            layer.close(index);
-                            reload();
-                        });
-                    } else {
-                        layer.alert(res.msg, {icon: 5});
+            layer.confirm('是否删除？', {
+                btn: ['删除', '取消'] //按钮
+            }, function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/system/deleteUser",
+                    data: {"userId": userId},
+                    success: function (res) {
+                        if (res.code === 0) {
+                            layer.alert(res.msg, {icon: 6}, function () {
+                                let index = layer.open(); //获取窗口索引
+                                layer.close(index);
+                                reload();
+                            });
+                        } else {
+                            layer.alert(res.msg, {icon: 5});
+                        }
+                    },
+                    error: function () {
+                        layer.alert('操作失败，网络故障!', {icon: 5});
                     }
-                },
-                error: function () {
-                    layer.alert('操作失败，网络故障!', {icon: 5});
-                }
-            })
+                })
+            }, function () {
+                layer.msg('取消删除', {
+                    time: 1000, //1s后自动关闭
+                });
+            });
+
+
         }
     });
 });

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <style type="text/css">
+        #form {
+            margin: 20px 50px;
+        }
+
+        .layui-form-item {
+            width: 500px;
+        }
+
+        .layui-form-pane .layui-form-label {
+            width: 100px;
+        }
+
+        .layui-form-item .layui-input-inline {
+            width: 400px;
+            margin: auto;
+        }
+
+        #Btn {
+            margin: 0 auto;
+            width: 92px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="x-body">
+    <div class="layui-form layui-form-pane" id="form">
+        <input type="hidden" name="id" value="{{ content.id }}"/>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span style="color: #dc3545">*&nbsp</span>编号
+            </label>
+            <div class="layui-input-inline">
+                <input value="{{ content.num }}" type="text" id="num" name="num" required
+                       lay-verify="required"
+                       placeholder="XX-DELL-P2419H-010" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label
+                    class="layui-form-label">型号</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.type }}" type="text" id="type" name="type" placeholder="P2419H"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label
+                    class="layui-form-label">资产归属</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.owner }}" type="text" id="owner" name="owner" placeholder="资产归属：XX
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label
+                    class="layui-form-label">主机编号</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.usepc }}" type="text" id="usepc" name="usepc"
+                       placeholder="XX-PC-MSI-B250M-LB-011"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态</label>
+            <div class="layui-input-inline">
+                <select id="status" name="status">
+                    {% for status in status_list %}
+                        {% if content.status == item %}
+                            <option value="{{ content.status }}" selected="">{{ content.status }}</option>
+                        {% else %}
+                            <option value="{{ status }}">{{ status }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">购买日期</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.buytime }}" type="text" class="layui-input" name="buytime" id="buytime"
+                       placeholder="yyyy/MM/dd">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">销毁日期</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.droptime }}" type="text" class="layui-input" name="droptime" id="droptime"
+                       placeholder="yyyy/MM/dd">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.comments }}" type="text" id="comments" name="comments" placeholder="备注"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div id="Btn">
+                <button class="layui-btn" lay-submit="" lay-filter="save">立即保存</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="/static/layui/layui.js"></script>
+<script src="/static/js/display/displayUpdate.js"></script>
+</body>
+</html>

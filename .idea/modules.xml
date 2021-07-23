@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/cmdb.iml" filepath="$PROJECT_DIR$/.idea/cmdb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/flask_cmdb_demo.iml" filepath="$PROJECT_DIR$/.idea/flask_cmdb_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/flask_cmdb_layui.iml" filepath="$PROJECT_DIR$/.idea/flask_cmdb_layui.iml" />
     </modules>
   </component>
 </project>

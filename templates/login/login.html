@@ -19,80 +19,81 @@
             z-index: 130;
             border-radius: 8px;
             background-color: #fff;
-            box-shadow: 0 3px 18px rgba(100, 0, 0, .5);
-            font-size: 16px;
+            box-shadow: 0 3px 18px #5a6268;
         }
 
-        .layui-input {
-            border-radius: 5px;
-            width: 300px;
-            height: 40px;
-            font-size: 15px;
-        }
-
-        .layui-form-item {
-            margin-left: -20px;
-        }
-
-        #logoid {
+        #logotitle {
             margin-top: 0px;
             padding-left: 150px;
             padding-bottom: 15px;
+
+            font-size: 24px;
+            font-style: normal;
+            font-family: 'Arimo', sans-serif;
+            font-weight: 400;
+            font-variant: normal;
+            color: rgba(151, 151, 151, 1);
+            letter-spacing: 2px;
+            word-spacing: 2px;
+            text-align: initial;
+            background: #fffcfc;
         }
 
-        .layui-btn {
-            margin-left: -50px;
+        #loginform {
+            width: 400px;
+            font-size: 16px;
+        }
+
+        .layui-form-label {
+            text-align: center;
+        }
+
+        .layui-form-item .layui-input-block {
+            width: 290px;
+            margin-right: 0;
+        }
+
+
+        #loginbtn {
             border-radius: 5px;
-            width: 350px;
+            width: 290px;
             height: 40px;
-            font-size: 15px;
-        }
-
-        .verity {
-            width: 120px;
+            font-size: 16px;
         }
 
 
     </style>
 </head>
 <body>
-<div class="layui-form ">
-    <div class="container">
-        <div class="layui-form-mid layui-word-aux">
-            <h3 id="logoid"> {{ content.systemName }}</h3>
-        </div>
+<div class="container">
+    <div class="layui-form-item">
+        <h3 id="logotitle">
+            {{ content.systemName }}</h3>
+    </div>
+    <div id="loginform" class="layui-form">
         <div class="layui-form-item">
             <label class="layui-form-label">用户名</label>
             <div class="layui-input-block">
-                <input type="text" name="loginName" required lay-verify="required" placeholder="请输入用户名"
+                <input type="text" name="loginName" id="loginName" lay-verify="required" placeholder="请输入用户名"
                        autocomplete="off"
                        class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">密 &nbsp;&nbsp;码</label>
-            <div class="layui-input-inline">
-                <input type="password" name="passWord" required lay-verify="required" placeholder="请输入密码"
+            <label class="layui-form-label">密&nbsp&nbsp&nbsp码</label>
+            <div class="layui-input-block">
+                <input type="password" name="passWord" id="passWord" required lay-verify="required"
+                       placeholder="请输入密码"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
-        {#        <div class="layui-form-item">#}
-        {#            <label class="layui-form-label">验证码</label>#}
-        {#            <div class="layui-input-inline">#}
-        {#                <input type="text" name="title" required lay-verify="required" placeholder="请输入验证码" autocomplete="off"#}
-        {#                       class="layui-input verity">#}
-        {#            </div>#}
-        {#        </div>#}
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="loginBtn">登陆</button>
+                <button class="layui-btn" lay-submit="" id="loginbtn" lay-filter="loginBtn">立即登陆</button>
             </div>
         </div>
     </div>
 </div>
-{#<div class="layui-footer" style="height: 60px;">#}
-{#    2021@{{ content.company }}#}
-{#</div>#}
 <script type="text/javascript" src="/static/layui/layui.js"></script>
 <script src="/static/js/login/md5.js"></script>
 <script src="/static/js/login/login.js"></script>

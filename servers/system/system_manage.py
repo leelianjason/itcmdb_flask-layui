@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, jsonify, request, session, redirect
 from werkzeug.datastructures import ImmutableMultiDict
 from servers.tools import system_db
-from .utils import Response
+from .utils import APIResponse
 from servers.tools.check_status import authentication
 from config import config
 import hashlib
@@ -10,14 +10,6 @@ system = Blueprint("system", __name__)
 
 # 引用配置文件
 setting = config.SoftConfig()
-
-
-class APIResponse(Response):
-    def __init__(self):
-        self.code = 0  # 0为正常，1为执行错误
-        self.msg = ''
-        self.count = ''
-        self.data = []
 
 
 @system.route("/index", endpoint="index")
@@ -127,7 +119,6 @@ def menu():
         for childrenInfo in msg["data"]["list"]:
             if resourceParent == childrenInfo.get("id"):
                 childrenInfo.get("children").append(childrenAppendInfo)
-    # print("list", msg)
     return jsonify(msg)
 
 
@@ -169,7 +160,6 @@ def addUser():
         return render_template("/system/addUser.html")
     elif request.method == "POST":
         params = ImmutableMultiDict.to_dict(request.form)
-        print(params)
         result = system_db.addUser(params)
         print('增加用户', result.__dict__)
         return result.__dict__
@@ -260,7 +250,6 @@ def addRole():
     elif request.method == "POST":
         params = ImmutableMultiDict.to_dict(request.form)
         result = system_db.addRole(params)
-        print('addRole', result.__dict__)
         return jsonify(result.__dict__)
 
 
@@ -317,7 +306,6 @@ def updateRole():
             "roleName": roledata.role_name,
             "resourceList": resourceItems
         }
-        print('content', content)
         return render_template("/system/updateRole.html", content=content)
 
     elif request.method == "POST":

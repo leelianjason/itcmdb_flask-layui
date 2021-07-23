@@ -11,14 +11,20 @@ layui  2.6.3
 
 **功能：**
 
-- 查询分页
-- 增删改查
-- 回收站
-- excel上传
-- 用户及权限管理
-- 自定义系统名称和项目名
+- 主机资产管理
+- 显示器管理
+- 回收站功能
+- 多选删除
+- excel批量导入
+- 用户权限管理
 
 ## 部署步骤
+
+准备环境
+
+```
+python 3.7.X
+```
 
 1.安装依赖
 
@@ -41,7 +47,7 @@ SQLAlchemy==1.4.3
 xlrd==1.2.0
 ```
 
-2.准备mysql和redis环境
+2.准备mysql和redis环境，如
 
 ```
 #mysql
@@ -93,7 +99,7 @@ class SoftConfig(object):
         # IT 管理平台项目名称，类型：list
         self.project_list = ['行政', '财务', '技术部', '公共资源']
         # IT设备状态，类型：list
-        self.status_list = ['使用中', '工位闲置', '库房闲置', '已销毁']
+        self.status_list = ['使用中', '闲置', ', '已销毁']
         # IT设备类型，类型：list
         self.type_list = ['兼容机', '笔记本', 'iMac']
 
@@ -105,14 +111,14 @@ class SoftConfig(object):
 python app.py
 ```
 
-默认使用5000端口，可以打开app.py修改
+默认使用80端口，可以打开app.py修改
 
 ```
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True, port=5000)
+    app.run(host='0.0.0.0', debug=True, port=80)
 ```
 
-7.访问地址http://IP:5000
+7.访问地址http://IP:80
 
 ```
 账号： admin
@@ -128,31 +134,24 @@ pip uninstall xlrd
 pip install xlrd==1.2.0
 ```
 
-## 后台截图
+## 更新日志：
 
-![](README.assets/image1.png)
+#### 20210723：
 
-![](README.assets/image2.png)
-
-![](README.assets/image3.png)
-
-![](README.assets/image4.png)
-
-![](README.assets/image5.png)
+1. 登录弹窗优化
+2. 多选删除
+3. 数据删除前弹窗提示
 
 ## 未实现的坑....
 
-- 多选删除
 - 公司账号管理
 - 右上角修改用户信息
-- 登录弹窗优化
-- 数据删除前弹窗提示
 
 ## 补充
 
-本项目借鉴了https://github.com/onceforyou/flask-admin，感谢大佬的贡献。
+本项目借鉴了https://github.com/onceforyou/flask-admin  感谢大佬的贡献。
 
-### 一些参考资料
+### 参考资料
 
 SQLalchemy操作语句， https://blog.csdn.net/GiveMeFive_Y/article/details/80455978
 
@@ -160,4 +159,22 @@ SQLalchemy中文文档：https://wizardforcel.gitbooks.io/flask-extension-docs/c
 
 ORM操作已存在的数据表：https://blog.csdn.net/GiveMeFive_Y/article/details/80455978
 
-前端框架：https://www.layui.com/demo/
+前端框架：https://www.layui.com/
+
+## 后台截图
+
+![image-0](README.assets/image-0.png)
+
+![image-1](README.assets/image-1.png)
+
+![image-2](README.assets/image-2.png)
+
+![image-3](README.assets/image-3.png)
+
+![image-4](README.assets/image-4.png)
+
+![image-5](README.assets/image-5.png)
+
+![image-6](README.assets/image-6.png)
+
+![image-7](README.assets/image-7.png)

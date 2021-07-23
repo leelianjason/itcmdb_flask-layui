@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <style type="text/css">
+        #updateform {
+            margin: 20px 50px;
+        }
+
+        .layui-form-item {
+            width: 500px;
+        }
+
+        .layui-form-pane .layui-form-label {
+            width: 110px;
+        }
+
+        .layui-form-item .layui-input-inline {
+            width: 390px;
+            margin: auto;
+        }
+
+        #subUpdateBtn {
+            margin: 0 auto;
+            width: 92px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="x-body">
+    <div class="layui-form layui-form-pane" id="updateform">
+        <input type="hidden" name="id" value="{{ content.id }}"/>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span style="color: #dc3545">*&nbsp</span>编号
+            </label>
+            <div class="layui-input-inline">
+                <input value="{{ content.num }}" type="text" id="num" name="num" required
+                       lay-verify="required"
+                       placeholder="XX-PC-MSI-B250M-LB-006" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label
+                    class="layui-form-label">使用人</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.user }}" type="text" id="user" name="user" placeholder="输入使用人"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">项目组</label>
+            <div class="layui-input-inline">
+                <select id="project" name="project">
+                    {% for project in project_list %}
+                        {% if content.project == project %}
+                            <option value="{{ content.project }}" selected="">{{ content.project }}</option>
+                        {% else %}
+                            <option value="{{ project }}">{{ project }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">部门</label>
+            <div class="layui-input-inline">
+                <select id="group" name="group">
+                    <option value="">选择部门</option>
+                    {% for group in group_list %}
+                        {% if content.group == group %}
+                            <option value="{{ content.group }}" selected="">{{ content.group }}</option>
+                        {% else %}
+                            <option value="{{ group }}">{{ group }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">机器状态</label>
+            <div class="layui-input-inline">
+                <select id="status" name="status">
+                    {% for status in status_list %}
+                        {% if content.status == status %}
+                            <option value="{{ content.status }}" selected="">{{ content.status }}</option>
+                        {% else %}
+                            <option value="{{ status }}">{{ status }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">机器类型</label>
+            <div class="layui-input-inline">
+                <select id="type" name="type">
+                    {% for type in type_list %}
+                        {% if content.type == type %}
+                            <option value="{{ content.type }}" selected="">{{ content.type }}</option>
+                        {% else %}
+                            <option value="{{ type }}">{{ type }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">资产归属</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.owner }}" type="text" id="owner" name="owner" placeholder="资产归属的公司"
+                       autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">配置等级</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.level }}" type="text" id="level" name="level" placeholder="配置等级：LA/LB/LC"
+                       autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">购买日期</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.buytime }}" type="text" class="layui-input" name="buytime" id="buytime"
+                       placeholder="yyyy/MM/dd">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">销毁日期</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.droptime }}" type="text" class="layui-input" name="droptime" id="droptime"
+                       placeholder="yyyy/MM/dd">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">CPU型号</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.cpu }}" type="text" id="cpu" name="cpu" placeholder="英特尔Corei5-7400"
+                       autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">主板型号</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.mb }}" type="text" id="mb" name="mb" placeholder="MSI-B250M" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">显卡型号</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.gpu }}" type="text" id="gpu" name="gpu" placeholder="NvidiaGTX1050(2GB/索泰)"
+                       autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">内存容量</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.mem }}" type="text" id="mem" name="mem" placeholder="8GB+8GG/16GB"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">主硬盘容量</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.maindisk }}" type="text" id="maindisk" name="maindisk" placeholder="西数240G(固态)"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">副硬盘容量</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.slavedisk }}" type="text" id="slavedisk" name="slavedisk"
+                       placeholder="希捷1T(机械)"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">主显示编号</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.maindisplay }}" type="text" id="maindisplay" name="maindisplay"
+                       placeholder="XX-DELL-P2419H-037"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">副显示编号</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.slavedisplay }}" type="text" id="slavedisplay" name="slavedisplay"
+                       placeholder="XX-DELL-P2419H-104"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-inline">
+                <input value="{{ content.comments }}" type="text" id="comments" name="comments" placeholder="备注"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div id="subUpdateBtn">
+                <button class="layui-btn" lay-submit="" lay-filter="subUpdateBtn">立即提交</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="/static/layui/layui.js"></script>
+<script src="/static/js/itdata/itDataChange.js"></script>
+</body>
+</html>

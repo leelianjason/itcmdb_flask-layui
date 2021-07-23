@@ -9,24 +9,41 @@ metadata = Base.metadata
 
 
 class Server(Base):
-    __tablename__ = 'itdata'
+    __tablename__ = 'cmdb_pc'
     id = Column(INTEGER(10), primary_key=True)
     num = Column(String(255))
-    project = Column(String(255))
     user = Column(String(255))
+    project = Column(String(255))
+    group = Column(String(255))
+    owner = Column(String(255))
     status = Column(String(255))
     type = Column(String(255))
-    isdel = Column(INTEGER(1))
+    isdel = Column(INTEGER(1), default=0)
     buytime = Column(String(255))
     droptime = Column(String(255))
+    level = Column(String(255))
     cpu = Column(String(255))
     mb = Column(String(255))
     gpu = Column(String(255))
     mem = Column(String(255))
     maindisk = Column(String(255))
     slavedisk = Column(String(255))
-    maindisplay = Column(String(255))
-    slavedisplay = Column(String(255))
+    maindisplay = Column(String(255), ForeignKey("cmdb_display.num"))
+    slavedisplay = Column(String(255), ForeignKey("cmdb_display.num"))
+    comments = Column(String(255))
+
+
+class Display(Base):
+    __tablename__ = 'cmdb_display'
+    id = Column(INTEGER(10), primary_key=True)
+    num = Column(String(255))
+    type = Column(String(255))
+    owner = Column(String(255))
+    usepc = Column(String(255))
+    status = Column(String(255))
+    isdel = Column(INTEGER(1), default=0)
+    buytime = Column(String(255))
+    droptime = Column(String(255))
     comments = Column(String(255))
 
 

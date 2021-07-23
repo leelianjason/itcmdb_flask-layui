@@ -4,38 +4,65 @@
     <meta charset="UTF-8">
     <title>添加角色</title>
     <link rel="stylesheet" href="/static/layui/css/layui.css"/>
+    <style type="text/css">
+        #form {
+            margin: 100px 50px;
+        }
+
+        .layui-form-item {
+            width: 500px;
+        }
+
+        .layui-form-pane .layui-form-label {
+            width: 100px;
+        }
+
+        .layui-form-item .layui-input-inline {
+            width: 400px;
+            margin: auto;
+        }
+
+        #Btn {
+            margin: auto;
+            width: 92px;
+        }
+    </style>
 </head>
 <body>
 
 
 <div class="x-body">
-    <div class="layui-form layui-form-pane" style="padding: 20px 40px;">
+    <div class="layui-form layui-form-pane" id="form">
         <div class="layui-form-item">
             <label for="roleName" class="layui-form-label">
-                <span class="x-red">*</span>角色名称
+                <span style="color: #dc3545">*&nbsp</span>角色名称
             </label>
-            <div class="layui-input-block">
-                <input type="text" name="roleName" id="roleName" required="" lay-verify="required" autocomplete="off"
+            <div class="layui-input-inline">
+                <input type="text" name="roleName" id="roleName" required="" lay-verify="required"
+                       autocomplete="off"
                        class="layui-input"/>
             </div>
         </div>
 
         <div class="layui-form-item">
             <label for="roleDes" class="layui-form-label">
-                <span class="x-red">*</span>角色描述
+                <span style="color: #dc3545">*&nbsp</span>角色描述
             </label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="text" name="roleDes" id="roleDes" required="" lay-verify="required" autocomplete="off"
                        class="layui-input"/>
             </div>
         </div>
 
-        <div class="layui-form-item" style="width: 80% ;margin: 0 auto">
-            <button class="layui-btn" lay-submit="" lay-filter="addRoleBtn">保存</button>
+        <div class="layui-form-item">
+            <div id="Btn">
+                <button class="layui-btn" lay-submit="" lay-filter="addRoleBtn">立即保存</button>
+            </div>
         </div>
 
 
     </div>
+
 </div>
 
 

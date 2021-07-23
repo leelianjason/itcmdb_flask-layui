@@ -31,6 +31,8 @@ class SoftConfig(object):
         self.company = "leelian.jason@gmail.com"
         # IT 管理平台项目名称，类型：list
         self.project_list = ['行政', '财务', '技术部', '公共资源']
+        # 部门类型
+        self.group_list = ['人事', '财务', '测试']
         # IT设备状态，类型：list
         self.status_list = ['使用中', '工位闲置', '库房闲置', '已销毁']
         # IT设备类型，类型：list

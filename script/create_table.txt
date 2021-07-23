@@ -1,0 +1,24 @@
+```
+CREATE TABLE `itdata` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `num` varchar(255) DEFAULT NULL,
+  `project` varchar(255) DEFAULT NULL,
+  `user` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `isdel` int(1) DEFAULT NULL,
+  `buytime` varchar(255) DEFAULT NULL,
+  `droptime` varchar(255) DEFAULT '',
+  `cpu` varchar(255) DEFAULT NULL,
+  `mb` varchar(255) DEFAULT NULL,
+  `gpu` varchar(255) DEFAULT NULL,
+  `mem` varchar(255) DEFAULT NULL,
+  `maindisk` varchar(255) DEFAULT NULL,
+  `slavedisk` varchar(255) DEFAULT NULL,
+  `maindisplay` varchar(255) DEFAULT NULL,
+  `slavedisplay` varchar(255) DEFAULT NULL,
+  `comments` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+```
+
